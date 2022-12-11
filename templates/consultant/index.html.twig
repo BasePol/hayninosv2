@@ -1,0 +1,117 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{% block content_title %}Bienvenido de vuelta {{ app.user ? app.user.username: "" }} 
+ {% endblock %}
+{% block page_actions %}
+    {% block stylesheets %} 
+    <style>
+
+
+td, th { 
+  padding: 15px; 
+  text-align: left; 
+}
+
+/* Zebra striping */
+.trs:nth-of-type(odd) { 
+  background: #16a085;
+ 
+}
+
+th { 
+  background: #2c3e50; 
+  font-weight: bold; 
+}
+
+h1 a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.container{
+   margin:auto;
+   width:80%;
+  
+}
+
+td
+{
+ max-width: 350px;
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}
+
+
+.tabla{
+
+   position: sticky;
+   border-collapse: collapse; 
+  background: #34495e; 
+  color: #f3f3f3;
+}
+
+
+
+td{
+     
+        position: initial;
+        max-width:200px;
+}
+
+ #calendrier{
+            
+            margin-top:-150px;
+            position:  sticky;
+            min-width:30%;
+            
+
+        }
+        #options{
+            min-width: 40%;
+            max-width: 50%;
+            height: auto;
+            
+        }
+
+@media screen and (max-width: 540px) {
+    #calendrier {
+        position: initial;
+        margin-top:20%;
+       margin-right:30%;
+        min-width: 100%;
+        
+        
+    }
+}
+@media screen and (min-width: 540px) and (max-width: 9900px) {
+    #calendrier {
+        padding: 15px;
+        min-width: 10%;
+        
+       
+      
+    }
+}
+@media screen and (min-width: 780px) {
+    #calendrier{
+     min-width: 10%;
+    
+    }
+}
+  
+    </style>
+{% endblock %}
+{% endblock %}
+
+{% block main %}
+
+ 
+</h1>
+   <ul>
+   <div class="render">
+   
+</div>
+ 
+  
+   
+{% endblock %}

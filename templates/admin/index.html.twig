@@ -1,0 +1,108 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{% block content_title %}Hello again Administrator, {{app.user.username}}{% endblock %}
+{% block page_actions %}
+{% endblock %}
+
+  
+
+{% block main %}
+<html>
+<body>
+<style>
+
+.icon-lg {
+    width: 64px;
+    height: 64px;
+}
+.border-radius-xl {
+    border-radius: 0.75rem;
+}
+.material-icons {
+    font-family: "Material Icons Round";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "liga";
+}
+.icon-shape i {
+    color: #fff;
+    opacity: 0.8;
+    top: 11px;
+    position: relative;
+}
+.icon-lg i {
+    top: 31%;
+    font-size: 1.5rem;
+}
+.bg-gradient-primary {
+    background-image: linear-gradient(195deg, #103B4D, #6CCBFA)
+}
+.bg-gradient-success {
+    background-image: linear-gradient(195deg, #66BB6A 0%, #43A047 100%);
+}
+p {
+  font-family: "Roboto", Helvetica, Arial, sans-serif;
+  font-style:bold;
+  color:black;
+}
+
+h4 {
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
+   color:black;
+}
+h6{
+  color:black;  
+}
+th{
+  color:black;  
+}
+</style>
+ <link rel="stylesheet" href="public\build\admin.css">
+<script src="https://kit.fontawesome.com/da956999a0.js" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <div class="container-fluid py-4">
+      <div class="row">
+ <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+          <div class="card">
+            <div class="card-header p-3 pt-2">
+              <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
+                <i class="material-icons opacity-10">person</i>
+              </div>
+              <div class="text-end pt-1">
+                <p class="text-sm mb-0 text-capitalize">Total Users</p>
+                <h4 class="mb-0">{{totalUsers}}</h4>
+              </div>
+            </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+           
+            </div>
+          </div>
+        </div>
+            <hr class="dark horizontal my-0">
+            <div class="card-footer p-3">
+           
+            </div>
+          </div>
+        </div>
+         </div> 
+         
+        <br><br>
+      
+        </body>
+ 
+   
+
+</html>
+{% endblock %}

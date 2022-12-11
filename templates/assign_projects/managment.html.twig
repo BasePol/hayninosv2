@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AssignProjectsController!{% endblock %}
+
+{% block body %}
+{{form_start(assignForm)}}
+{{form_label(assignForm.nameproject)}}
+<br>
+{{form_widget(assignForm.nameproject)}}
+<br>
+{{form_label(assignForm.manager)}}
+<br>
+{{form_widget(assignForm.manager)}}
+<br>
+<br>
+<br>
+{{form_label(assignForm.member)}}
+<br>
+{{form_widget(assignForm.member)}}
+<br>
+<button type="submit" class="btn">Save</button>
+{{form_end(assignForm)}}
+{% endblock %}

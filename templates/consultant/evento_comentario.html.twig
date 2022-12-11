@@ -1,0 +1,38 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.checked {
+  color: orange;
+}
+</style>
+</head>
+
+{% if ea.crud.currentAction == 'detail' %}
+    <table class="table table-striped">
+        <tr><th>Fecha</th><th>Usuario</th><th>Comentario</th><th>Rating</th></tr>
+        {% for value in field.value %}
+        <tr>
+            <td>{{value.createdAt}}</td>
+            <td>{{value.user.username}}</td>
+            <td>{{value.mensaje}}</td>
+            <td>
+
+        {% for i in 0..4 %}
+        {% if i < value.rating %}
+            <span class="fa fa-star checked"></span>
+        {% else %}
+            <span class="fa fa-star"></span>
+        {% endif %}
+        {% endfor %}
+            
+            </td>
+
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <span class="badge badge-secondary">{{ field.formattedValue }}</span>
+{% endif %}

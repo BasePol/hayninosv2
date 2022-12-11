@@ -1,0 +1,36 @@
+
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+     
+        
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        
+        
+        {% endblock %}
+
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+       
+        {% block javascripts %}
+    <script src="js/jquery-3.4.1.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="bootstrap-4.3.1/js/bootstrap.min.js"></script>
+  <script src="datatables/datatables.min.js"></script>
+  <script src="clockpicker/bootstrap-clockpicker.js"></script>
+  <script src='js/moment-with-locales.js'></script>
+  <script src='fullcalendar-4.3.1/packages/core/main.js'></script>
+  <script src='fullcalendar-4.3.1/packages/daygrid/main.js'></script>
+  <script src='fullcalendar-4.3.1/packages/timegrid/main.js'></script>
+  <script src='fullcalendar-4.3.1/packages/interaction/main.js'></script>
+  <script src='fullcalendar-4.3.1/packages/list/main.js'></script>
+  <script src='fullcalendar-4.3.1/packages/core/locales/es.js'></script>
+  <script src='fullcalendar-4.3.1/packages/bootstrap/main.js'></script>
+        {% endblock %}
+    </body>
+</html>
