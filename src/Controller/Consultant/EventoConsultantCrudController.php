@@ -122,9 +122,9 @@ class EventoConsultantCrudController extends AbstractCrudController
        $targetUrl = $adminUrlGenerator
             ->setDashboard(ConsultantDashboardController::class)
             ->setController(ComentarioCrudController::class)
-            ->setAction(Action::NEW)
+            ->setAction(Action::EDIT)
             ->set('prueba', 'someValue')
-            ->setEntityId(1)
+            ->setEntityId($adminContext->getEntity()->getInstance()->getId())
             ->generateUrl();
         return $this->redirect($targetUrl);
     }

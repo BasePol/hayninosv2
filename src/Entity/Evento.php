@@ -279,8 +279,8 @@ class Evento
     {
         return $this->comentarios;
     }
-/*
-    public function addComentario(Comentario $comentario): self
+
+    public function addComentarioObject(Comentario $comentario): self
     {
         if (!$this->comentarios->contains($comentario)) {
             $this->comentarios[] = $comentario;
@@ -289,7 +289,7 @@ class Evento
 
         return $this;
     }
-*/
+
     public function addComentario(string $mensaje): self
     {
         $comentario = new Comentario();
