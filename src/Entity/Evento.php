@@ -90,7 +90,7 @@ class Evento
      */
     private $comentarios;
 
-
+    private $user;
 
     public function __construct()
     {
@@ -98,7 +98,18 @@ class Evento
         $this->comentarios = new ArrayCollection();
     }
 
-   
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(User $user): User
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
 
     public function getId(): ?int
     {
@@ -280,20 +291,37 @@ class Evento
         return $this->comentarios;
     }
 
-    public function addComentarioObject(Comentario $comentario): self
+    public function addComentario(Comentario $comentario): self
     {
         if (!$this->comentarios->contains($comentario)) {
             $this->comentarios[] = $comentario;
             $comentario->setEvento($this);
+          //  $comentario->setUser($this->security->getUser());
+
         }
 
         return $this;
     }
 
-    public function addComentario(string $mensaje): self
+    public function addComentariobah(string $mensaje): self
     {
         $comentario = new Comentario();
         $comentario->setMensaje($mensaje);
+        //var_dump($mensaje);exit;
+
+        if (!$this->comentarios->contains($comentario)) {
+            $this->comentarios[] = $comentario;
+            $comentario->setEvento($this);
+        }
+        return $this;
+    }
+
+    public function addRatings(string $mensaje): self
+    {
+        $comentario = new Comentario();
+        $comentario->setRatings($mensaje);
+        
+        var_dump($mensaje);exit;
 
         if (!$this->comentarios->contains($comentario)) {
             $this->comentarios[] = $comentario;
@@ -313,6 +341,12 @@ class Evento
 
         return $this;
     }
+
+    public function getTime(): ?\DateTimeInterface {
+        $time = new \DateTime();
+        return $time;
+    }
+    
 
 
 }

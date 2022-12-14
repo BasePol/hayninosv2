@@ -2,6 +2,9 @@
 
 namespace App\Entity;
 
+
+use Symfony\Component\Security\Core\Security;
+
 use App\Repository\ComentarioRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -27,12 +30,7 @@ class Comentario
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $Rating;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Evento::class, mappedBy="comentarios")
-     */
-    private $eventos;
+    private $ratings;
 
     /**
      * @ORM\ManyToOne(targetEntity=Evento::class, inversedBy="comentarios")
@@ -49,8 +47,11 @@ class Comentario
      */
     private $createdAt;
 
+
     public function __construct()
     {
+
+        $this->createdAt = new \DateTime();
         $this->eventos = new ArrayCollection();
     }
 
@@ -71,15 +72,15 @@ class Comentario
         return $this;
     }
 
-    public function getRating(): ?int
+    public function getRatings(): ?int
     {
-        return $this->Rating;
+        return $this->ratings;
     }
 
-    public function setRating(?int $Rating): self
+    public function setRatings(?int $Rating): self
     {
-        $this->Rating = $Rating;
-
+        $this->ratings = $Rating;
+        //var_dump($Rating);exit;
         return $this;
     }
 

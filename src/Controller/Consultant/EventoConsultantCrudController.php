@@ -123,7 +123,7 @@ class EventoConsultantCrudController extends AbstractCrudController
             ->setDashboard(ConsultantDashboardController::class)
             ->setController(ComentarioCrudController::class)
             ->setAction(Action::EDIT)
-            ->set('prueba', 'someValue')
+            ->set('prue ba', 'someValue')
             ->setEntityId($adminContext->getEntity()->getInstance()->getId())
             ->generateUrl();
         return $this->redirect($targetUrl);
@@ -218,6 +218,7 @@ class EventoConsultantCrudController extends AbstractCrudController
             ->setUploadDir('public/img/')
             ->setUploadedFileNamePattern('[randomhash].[extension]')
             ->setRequired(false),   
+            NumberField::new('rating'),
             TextEditorField::new('descripcion'),
             DateField::new('fechaInicio')->setFormat('yyyy.MM.dd')
             ->renderAsChoice(),

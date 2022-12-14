@@ -5,6 +5,9 @@ namespace App\Controller\Consultant;
 use App\Entity\Comentario;
 use App\Entity\Evento;
 
+use App\Form\EventoType;
+
+
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -117,7 +120,13 @@ class ComentarioCrudController extends AbstractCrudController
         return [
 
             TextField::new('titulo')->setFormTypeOption('disabled','disabled'),
+            TextField::new('user')->setFormTypeOption('disabled','disabled'),
+
+           // DateField::new('time')->setFormat('yyyy.MM.dd')
+            //->setFormTypeOption('disabled','disabled'),
+            //->renderAsChoice(),
             CollectionField::new('comentarios')
+            ->setEntryType(EventoType::class)
             ->allowDelete(false)
            // ->renderExpanded()
             ->setEntryIsComplex(true)
@@ -128,10 +137,6 @@ class ComentarioCrudController extends AbstractCrudController
             //->setEntryIsComplex()
            // ->setTemplatePath('consultant/evento_comentario.html.twig'),
             //CollectionField::new('comentarios')
-
-
-            
-
 
         ];
     }
@@ -156,7 +161,7 @@ class ComentarioCrudController extends AbstractCrudController
     }
 
 
-
+/*
     public function createEntity(string $entityFqcn){
        // var_dump($this->getContext()->getEntity()->getInstance()->getMensaje());
 
@@ -170,7 +175,7 @@ class ComentarioCrudController extends AbstractCrudController
         //var_dump($comentario->getEvento());exit;
         $comentario->setUser($this->getUser());
         $comentario->setCreatedAt($time);
-        //$comentario->setMensaje(" ");
+        $comentario->setMensaje(" ");
 
         $evento->addComentarioObject($comentario);
 
@@ -180,6 +185,63 @@ class ComentarioCrudController extends AbstractCrudController
         
         return $evento;
     }
- 
-    
+ */
+    /*
+    public function updateEntity($entity)
+    {
+        var_dump($entity);
+        if (method_exists($entity, 'setUpdatedAt')) {
+            $entity->setUpdatedAt(new \DateTime());
+        }
+
+        parent::updateEntity($entity);
+    }
+
+
+    public static function getSubscribedEvents()
+    {
+        return [
+            BeforeEntityPersistedEvent::class => ['setBlogPostSlug'],
+        ];
+    }
+
+    public function setBlogPostSlug(BeforeEntityPersistedEvent $event)
+    {
+        $entity = $event->getEntityInstance();
+
+        if (!($entity instanceof Evento)) {
+            return;
+        }
+
+        $slug = $this->slugger->slugify($entity->getTitle());
+        $entity->setSlug($slug);
+    }
+    */   
+
+    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        $user = $this->getUser();
+        if (!$user instanceof User) {
+            throw new \LogicException('Currently logged in user is not an instance of User?!');
+        }
+
+        $comentarios = $entityInstance->getComentarios();
+        $lastIndex = count($comentarios)-1 ;
+        $entityInstance->getComentarios()[$lastIndex]->setUser($user);
+        $total = 0;
+        foreach($comentarios as $comentario)
+        {
+            $total += $comentario->getRatings();
+        }
+
+        var_dump($total);
+        var_dump($lastIndex);
+        if ($lastIndex === 0){
+            $entityInstance->setRating($total);
+        }
+        else{
+            $entityInstance->setRating($total/$lastIndex);
+        }
+        parent::updateEntity($entityManager, $entityInstance);
+    }   
 }
