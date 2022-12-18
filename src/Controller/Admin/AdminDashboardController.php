@@ -79,9 +79,9 @@ class AdminDashboardController extends AbstractDashboardController
     {
         yield MenuItem::section('Basic');
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
-        yield MenuItem::linkToCrud('Eventos', 'fa fa-hourglass', Evento::class)
+        yield MenuItem::linkToCrud('Importar Eventos', 'fa fa-hourglass', Evento::class)
         ->setController(EventoCrudController::class);
-        yield MenuItem::linkToCrud('Restaurantes y Bares', 'fa fa-hourglass', Evento::class)
+        yield MenuItem::linkToCrud('Lugares', 'fa fa-hourglass', Evento::class)
         ->setController(RestaurantesBaresAdminCrudController::class);
         yield MenuItem::linkToCrud('Usuarios', 'fa fa-hourglass', User::class)
         ->setController(UserCrudController::class);

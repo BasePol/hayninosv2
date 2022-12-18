@@ -119,7 +119,9 @@ class EventoCrudController extends AbstractCrudController
             $entityManager->persist($evento);}
             //break;
         }
-        exit;
+
+        //exit;
+        return $this->redirect("/admin");
     }
 
     public function addToFavorites(BatchActionDto $batchActionDto)
@@ -168,7 +170,8 @@ class EventoCrudController extends AbstractCrudController
             ->setIcon('fa fa-user-check'))
             
 
-        
+            ->remove(Crud::PAGE_INDEX, Action::NEW)
+
             ->add(Crud::PAGE_INDEX, $importMadridEvents);
             //->remove(Crud::PAGE_INDEX, Action::DELETE)
             //->remove(Crud::PAGE_INDEX, Action::NEW);
