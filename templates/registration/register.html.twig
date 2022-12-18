@@ -24,6 +24,11 @@ body{
   align-items: center;
 }
 
+.chck{
+        transform: scale(2.5);
+
+}
+
 .container{
   position: relative;
   max-width: 53.125em;
@@ -307,8 +312,8 @@ body{
                 <input type="submit" value="Submit">
               </div>
             <a href="{{ path('app_register')}}">Don’t have an account? Sign up</a>
-            </div>
-              <div for="registration_form_agreeTerms" class="rmb">Agree terms
+            </div><br>
+              <div for="registration_form_agreeTerms" class="rmb">Agree terms &nbsp;&nbsp;&nbsp;
     
        <input type="checkbox" class="chck" id="registration_form_agreeTerms" name="registration_form[agreeTerms]" required="required" value="1" />
    </div>
