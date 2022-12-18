@@ -321,8 +321,6 @@ class Evento
         $comentario = new Comentario();
         $comentario->setRatings($mensaje);
         
-        var_dump($mensaje);exit;
-
         if (!$this->comentarios->contains($comentario)) {
             $this->comentarios[] = $comentario;
             $comentario->setEvento($this);

@@ -104,7 +104,7 @@ border: 1px solid rgba(228, 18, 31, 0.24);
     border: 1px solid rgba(16, 220, 238, 0.38);
     max-width: 80%;
     margin: auto;
-    color:white;
+    color:red;
 
 
 }
@@ -114,7 +114,6 @@ border: 1px solid rgba(228, 18, 31, 0.24);
             width: 40%;
         }
  body{
-    background: url("https://i.pinimg.com/originals/3c/24/46/3c24462450c2a902bf7e18f3d9aada81.jpg") no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -153,15 +152,15 @@ border: 1px solid rgba(228, 18, 31, 0.24);
 }
 @media screen and (min-width: 780px) {
       #calendar{
- background: rgba(16, 220, 238, 0.14);
+ background: lightgray;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(16, 220, 238, 0.38);
-    max-width: 80%;
+    max-width: 90%;
     margin: auto;
-    color:white;
+    color:red;
 
 
 }
@@ -229,41 +228,11 @@ border: 1px solid rgba(228, 18, 31, 0.24);
                     right: 'dayGridMonth,timeGridWeek,timeGridDay',
                 },
             eventRender: function(info) {
-            $(info.el).tooltip({
-            title: " Project          " + info.event.title + "\n\n\n\n" +
-             " Username " + info.event.extendedProps.description + " and the date is " + info.event.start,
-            placement: 'top',
-            trigger: 'hover',
-            container: 'body'
-            });
+            $(info.el).tooltip({   });
             },
             events:
             {{data|raw}}
             ,
-            customButtons: {
-            
-              myCustomButton: {
-              text: 'Export to PDF!',  
-             
-              click : function () {
-              alert('Exporting to PDF!');
-              html2canvas($('#calendar'), {
-               logging: true,
-               useCORS: true,
-              onrendered: function (canvas) {
-               var imgData = canvas.toDataURL("image/jpeg");
-               var doc = new jsPDF();      
-               doc.addImage(imgData, 'JPEG', 15, 40, 180, 160);
-              download(doc.output(), "CALENDAR.pdf", "text/pdf");                       
-
-              }
-               }) ;      
-             } 
-
-       
-                
-              }
-            },
             weekends: false,
             plugins: [ 'interaction', 'dayGrid', 'timeGrid'],
             timeZone: 'UTC',
@@ -276,7 +245,6 @@ border: 1px solid rgba(228, 18, 31, 0.24);
             views: {
              month: {
              eventLimit: 2
-
              }
             },
             //validRange: {

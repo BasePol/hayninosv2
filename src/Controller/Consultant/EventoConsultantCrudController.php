@@ -123,7 +123,6 @@ class EventoConsultantCrudController extends AbstractCrudController
             ->setDashboard(ConsultantDashboardController::class)
             ->setController(ComentarioCrudController::class)
             ->setAction(Action::EDIT)
-            ->set('prue ba', 'someValue')
             ->setEntityId($adminContext->getEntity()->getInstance()->getId())
             ->generateUrl();
         return $this->redirect($targetUrl);
@@ -174,11 +173,12 @@ class EventoConsultantCrudController extends AbstractCrudController
             ->remove(Crud::PAGE_INDEX, Action::EDIT)
             ->remove(Crud::PAGE_DETAIL, Action::DELETE)
             ->remove(Crud::PAGE_DETAIL, Action::EDIT)
+
+
             ->addBatchAction(Action::new('approve', 'Add to Favorites')
             ->linkToCrudAction('addToFavorites')
             ->addCssClass('btn btn-primary')
             ->setIcon('fa fa-user-check'))
-
 
             ->addBatchAction(Action::new('deleteFavourites', 'Remove from Favorites')
             ->linkToCrudAction('deleteFavorites')
@@ -211,7 +211,6 @@ class EventoConsultantCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            //IdField::new('id'),
             TextField::new('titulo'),
             ImageField::new('image')
             ->setBasePath('img/')
@@ -230,7 +229,7 @@ class EventoConsultantCrudController extends AbstractCrudController
            // ->label("prueba"),
             //UrlField::new('direccion')->onlyOnDetail(),
             NumberField::new('precio'),
-            NumberField::new('rating')->onlyOnDetail(),
+            //NumberField::new('rating')->onlyOnDetail(),
             AssociationField::new('comentarios')->onlyOnDetail()
             ->setCrudController(ComentarioCrudController::class)->autocomplete()
             //->renderExpanded()
@@ -247,7 +246,7 @@ class EventoConsultantCrudController extends AbstractCrudController
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-            ->add('fechaInicio')
+            //->add('fechaInicio')
             ->add('fechaFin')
             ->add('localidad')
             ->add('precio')

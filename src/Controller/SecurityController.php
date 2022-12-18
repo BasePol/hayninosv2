@@ -8,14 +8,26 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+use Symfony\Bundle\SecurityBundle\Security;
 
 class SecurityController extends AbstractController
 {
     #[Route(path: '/login', name: 'app_login')]
     public function login(AuthenticationUtils $authenticationUtils, Request $request): Response
     {
-        $referer = $request->headers->get('referer');       
 
+        //$this->logout();
+        $referer = $request->headers->get('referer');       
+/*
+        $form = $this->createForm(LoginFormType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($this->getUser()) {
+                return $this->redirectToRoute('target_path');
+            }
+        }
+*/
         if ($this->getUser()) {
             return $this->redirectToRoute('target_path');
         }

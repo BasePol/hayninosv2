@@ -234,12 +234,13 @@ class ComentarioCrudController extends AbstractCrudController
             $total += $comentario->getRatings();
         }
 
-        var_dump($total);
-        var_dump($lastIndex);
         if ($lastIndex === 0){
+            var_dump("aqui");exit;
             $entityInstance->setRating($total);
         }
         else{
+            var_dump("oooo aqui");exit;
+
             $entityInstance->setRating($total/$lastIndex);
         }
         parent::updateEntity($entityManager, $entityInstance);

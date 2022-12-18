@@ -56,8 +56,21 @@ class StartController extends AbstractController
     #[Route('/', name: 'app_start')]
     public function index(): Response
     {
+        $userName = "";
+        $roles = "";
+        /*
+        if ($this->getUser()) {
+            $userName = $this->getuser()->getUsername();
+            $roles = $this->getUser()->getRoles();
+            if (in_array("admin", $roles)) {
+                    $roles = 'admin';
+                }
+
+        }
+*/
         return $this->render('start/index.html.twig', [
             'controller_name' => 'StartController',
+            'userName' => $userName,
         ]);
     }
 }

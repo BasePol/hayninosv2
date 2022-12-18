@@ -1,6 +1,7 @@
 {% apply inline_css %}
-<html>
+<html lang="es" >
         <head>
+			<title>iKIDS</title>
             <style>
 @import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
@@ -214,7 +215,7 @@ header.sticky{
 	box-shadow: 0 5px 20px rgba(0,0,0,0.1);
 }
 header .logo{
-	color: #fff;
+	color: purple;
 	font-size: 24px;
 	text-transform: uppercase;
 	text-decoration: none;
@@ -464,7 +465,7 @@ img{
 {% block body %}
 <body>
 	<header>
-		<a href="#" class="logo"><i class="fa fa-info-circle" aria-hidden="true"></i>
+		<a href="#" class="logo"><i class="fa fa-info-circle" aria-hidden="false"></i>
 KIDS</a>
 		
 		<i class="fa fa-heart-o"></i>
@@ -473,17 +474,23 @@ KIDS</a>
 <i class="fa fa-heart-o" style="font-size:48px;color:red"></i>
 
 		<div class="toggle" onclick="toggleMenu();"></div>
-		<ul class="menu">
+		<ul class="menu" >
 			<li><a href="#home">Home</a></li>
 			<li><a href="#about">Sobre nosotros</a></li>
 			<li><a href="{{path ('app_eventos')}}">Eventos</a></li>
+			{% if  userName == null %}
 			<li><a href="{{path ('app_login')}}">Log in</a></li>
+			{% else %}
+			<li>Usuario: {{userName}}</li>
+			 {% endif %}
+			 
+
 		</ul>
 	
 	</header> 
 	<section class="banner" id="home">
 			<div class="textBx">
-				<h2 class="d">Bienvenido <p style="color=black;">a </p><br><span> <i class="fa fa-info-circle" aria-hidden="true"></i>
+				<h2 class="d">Bienvenido <p style="color=black;">a </p><br><span> <i class="fa fa-info-circle" aria-hidden="false"></i>
  Kids</span></h2>
 			
 			</div>

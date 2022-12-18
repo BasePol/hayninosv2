@@ -127,10 +127,6 @@ class UserCrudController extends AbstractCrudController
             TextField::new('username')
             ->setTemplatePath('consultant/evento_user.html.twig')
             ->onlyOnDetail(),
-
-            //$this->get_current_user
-            
-            
             AssociationField::new('favorites', 'Eventos')->setTemplatePath('consultant/evento_image.html.twig'),
             AssociationField::new('restaurantesBares')->setTemplatePath('consultant/bares_image.html.twig'),
             //CollectionField::new('favorites')->setTemplatePath('consultant/evento.html.twig')
