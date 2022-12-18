@@ -50,7 +50,8 @@ class ConsultantDashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Ikids - Dashboard de Actividades');
+            ->setTitle('Ikids - Dashboard de Actividades')
+            ->renderSidebarMinimized();
     }
     public function configureMenuItems(): iterable
     {

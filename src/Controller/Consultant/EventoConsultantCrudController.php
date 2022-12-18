@@ -218,7 +218,7 @@ class EventoConsultantCrudController extends AbstractCrudController
             ->setUploadDir('public/img/')
             ->setUploadedFileNamePattern('[randomhash].[extension]')
             ->setRequired(false),   
-            TextEditorField::new('descripcion'),
+            TextEditorField::new('descripcion')->hideOnIndex(),
             DateField::new('fechaInicio')->setFormat('yyyy.MM.dd')
             ->renderAsChoice(),
             DateField::new('fechaFin')->setFormat('yyyy.MM.dd')

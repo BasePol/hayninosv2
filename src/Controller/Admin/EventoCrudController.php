@@ -86,7 +86,7 @@ class EventoCrudController extends AbstractCrudController
     //        var_dump(\DateTime::createFromFormat('Y-m-d', $eventoJSON['dtstart']));exit;
             $evento->setFechaInicio(new \DateTime($eventoJSON['dtstart']));
             $evento->setFechaFin(new \DateTime($eventoJSON['dtend']));
-            $evento->setTipoPublico("TodoPublico");
+            $evento->setTipoPublico($eventoJSON['audience']);
             $evento->setLocalidad($eventoJSON['event-location']);
             if($eventoJSON['location'] ?? NULL){
                 //$evento->setDireccion('https://maps.google.com/?ll='.(string)$eventoJSON['location']['latitude'] ."," . (string)$eventoJSON['location']['longitude']);
@@ -97,7 +97,6 @@ class EventoCrudController extends AbstractCrudController
             {
                 $evento->setDireccion($eventoJSON['event-location']);
             }
-            
             $evento->setImage('KidFront.png');
             //$evento->setLocalidad($eventoJSON['address']['area']['locality']);
             //$evento->setDireccion($eventoJSON['address']['area']['street-address']);
@@ -105,9 +104,9 @@ class EventoCrudController extends AbstractCrudController
 
       //      $evento->setFechaFin( \DateTime::createFromFormat('Y-m-d', $eventoJSON['dtend'])->format('Y-m-d'));
             //$evento->setFechaFin($eventoJSON['dtend']);
-
+            if ($eventoJSON['audience']=="Familias"){
             $entityManager->flush();
-            $entityManager->persist($evento);
+            $entityManager->persist($evento);}
             //break;
         }
         exit;
