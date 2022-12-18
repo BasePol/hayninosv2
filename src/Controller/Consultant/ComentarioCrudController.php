@@ -55,42 +55,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Contracts\Controller\CrudControllerInterface
 use EasyCorp\Bundle\EasyAdminBundle\Dto\AssetsDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\SearchDto;
-use EasyCorp\Bundle\EasyAdminBundle\Event\AfterCrudActionEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityDeletedEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityUpdatedEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeCrudActionEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityDeletedEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Exception\EntityRemoveException;
-use EasyCorp\Bundle\EasyAdminBundle\Exception\ForbiddenActionException;
-use EasyCorp\Bundle\EasyAdminBundle\Exception\InsufficientEntityPermissionException;
-use EasyCorp\Bundle\EasyAdminBundle\Factory\ActionFactory;
-use EasyCorp\Bundle\EasyAdminBundle\Factory\ControllerFactory;
-use EasyCorp\Bundle\EasyAdminBundle\Factory\EntityFactory;
-use EasyCorp\Bundle\EasyAdminBundle\Factory\FilterFactory;
-use EasyCorp\Bundle\EasyAdminBundle\Factory\FormFactory;
-use EasyCorp\Bundle\EasyAdminBundle\Factory\PaginatorFactory;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\FiltersFormType;
-use EasyCorp\Bundle\EasyAdminBundle\Form\Type\Model\FileUploadState;
-use EasyCorp\Bundle\EasyAdminBundle\Orm\EntityRepository;
-use EasyCorp\Bundle\EasyAdminBundle\Orm\EntityUpdater;
-use EasyCorp\Bundle\EasyAdminBundle\Provider\AdminContextProvider;
-use EasyCorp\Bundle\EasyAdminBundle\Provider\FieldProvider;
-use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
-use EasyCorp\Bundle\EasyAdminBundle\Security\Permission;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\FormInterface;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
-use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
+
 
 class ComentarioCrudController extends AbstractCrudController
 {
@@ -235,11 +200,11 @@ class ComentarioCrudController extends AbstractCrudController
         }
 
         if ($lastIndex === 0){
-            var_dump("aqui");exit;
+            //var_dump("aqui");exit;
             $entityInstance->setRating($total);
         }
         else{
-            var_dump("oooo aqui");exit;
+            //var_dump("oooo aqui");exit;
 
             $entityInstance->setRating($total/$lastIndex);
         }

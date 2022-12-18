@@ -87,7 +87,16 @@ class EventoCrudController extends AbstractCrudController
     //        var_dump(\DateTime::createFromFormat('Y-m-d', $eventoJSON['dtstart']));exit;
             $evento->setFechaInicio(new \DateTime($eventoJSON['dtstart']));
             $evento->setFechaFin(new \DateTime($eventoJSON['dtend']));
-            $evento->setTipoPublico($eventoJSON['audience']);
+            if($eventoJSON['audience'] ?? NULL){
+                //$evento->setDireccion('https://maps.google.com/?ll='.(string)$eventoJSON['location']['latitude'] ."," . (string)$eventoJSON['location']['longitude']);
+                //$evento->setDireccion('https://maps.google.com/?q='.$eventoJSON['event-location']);
+                $evento->setTipoPublico($eventoJSON['audience']);
+            }
+            else
+            {
+                $evento->setDireccion("Todo Publico");
+            }
+            
             $evento->setLocalidad($eventoJSON['event-location']);
             if($eventoJSON['location'] ?? NULL){
                 //$evento->setDireccion('https://maps.google.com/?ll='.(string)$eventoJSON['location']['latitude'] ."," . (string)$eventoJSON['location']['longitude']);
@@ -105,7 +114,7 @@ class EventoCrudController extends AbstractCrudController
 
       //      $evento->setFechaFin( \DateTime::createFromFormat('Y-m-d', $eventoJSON['dtend'])->format('Y-m-d'));
             //$evento->setFechaFin($eventoJSON['dtend']);
-            if ($eventoJSON['audience']=="Familias"){
+            if ($evento->getTipoPublico()=="Familias" || $evento->getTipoPublico()=="Niños" || $evento->getTipoPublico()=="Niños, Familias"){
             $entityManager->flush();
             $entityManager->persist($evento);}
             //break;
