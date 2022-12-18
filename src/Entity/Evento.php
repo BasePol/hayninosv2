@@ -86,7 +86,7 @@ class Evento
     private $users;
 
     /**
-     * @ORM\OneToMany(targetEntity=Comentario::class, mappedBy="evento", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity=Comentario::class, mappedBy="evento", cascade={"persist", "remove"})
      */
     private $comentarios;
 

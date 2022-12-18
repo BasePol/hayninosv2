@@ -108,10 +108,10 @@ class EventoConsultantCrudController extends AbstractCrudController
 
     public function cambiarDireccion(AdminContext $adminContext, AdminUrlGenerator $adminUrlGenerator)
     {
-        $question = $adminContext->getEntity()->getInstance();
+        $evento = $adminContext->getEntity()->getInstance();
         //var_dump($question->getTitulo());exit;
 
-        if (!$question instanceof Evento) {
+        if (!$evento instanceof Evento) {
             throw new \LogicException('Entity is missing or not a Question');
         }
 
@@ -150,7 +150,7 @@ class EventoConsultantCrudController extends AbstractCrudController
         // ->createAsGlobalAction();
         */
 
-        if($user == null){
+        if($user == null ){
             return $actions
             ->add(Crud::PAGE_INDEX, Action::DETAIL)
             ->remove(Crud::PAGE_INDEX, Action::DELETE)
@@ -220,6 +220,7 @@ class EventoConsultantCrudController extends AbstractCrudController
             TextEditorField::new('descripcion')->hideOnIndex(),
             NumberField::new('rating'),
             DateField::new('fechaInicio')->setFormat('yyyy.MM.dd')
+            ->hideOnIndex()
             ->renderAsChoice(),
             DateField::new('fechaFin')->setFormat('yyyy.MM.dd')
             ->renderAsChoice(),
