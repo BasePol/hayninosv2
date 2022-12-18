@@ -54,16 +54,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $username;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="membersOfTheProject")
-     */
-    private $projects;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Project::class, mappedBy="managersOfTheProject")
-     */
-    private $managers;
-
-    /**
      * @ORM\ManyToMany(targetEntity=Evento::class, inversedBy="users")
      */
     private $favorites;
@@ -162,63 +152,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
     public function __toString() {
         return $this->username;
-    }
-
-    /**
-     * @return Collection<int, Project>
-     */
-    public function getProjects(): Collection
-    {
-        return $this->projects;
-    }
-
-    public function addProject(Project $project): self
-    {
-        if (!$this->projects->contains($project)) {
-            $this->projects[] = $project;
-            $project->addMembersOfTheProject($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProject(Project $project): self
-    {
-        if ($this->projects->removeElement($project)) {
-            $project->removeMembersOfTheProject($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Project>
-     */
-    public function getManagers(): Collection
-    {
-        return $this->managers;
-    }
-
-    public function addManager(Project $manager): self
-    {
-        if (!$this->managers->contains($manager)) {
-            $this->managers[] = $manager;
-            $manager->setManagersOfTheProject($this);
-        }
-
-        return $this;
-    }
-
-    public function removeManager(Project $manager): self
-    {
-        if ($this->managers->removeElement($manager)) {
-            // set the owning side to null (unless already changed)
-            if ($manager->getManagersOfTheProject() === $this) {
-                $manager->setManagersOfTheProject(null);
-            }
-        }
-
-        return $this;
     }
 
     /**

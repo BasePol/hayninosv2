@@ -22,7 +22,7 @@ class PruebaSubscriber implements EventSubscriberInterface
 
     public function onBeforeEntityUpdatedEvent(BeforeEntityUpdatedEvent $event)
     {
-        var_dump($event);exit;
+        //var_dump($event);exit;
         $evento = $event->getEntityInstance();
         if (!$comentario instanceof Evento) {
             return;
@@ -32,7 +32,7 @@ class PruebaSubscriber implements EventSubscriberInterface
         if (!$user instanceof User) {
             throw new \LogicException('Currently logged in user is not an instance of User?!');
         }
-        var_dump($user);exit;
+        //var_dump($user);exit;
         $comentario->setUser($user);
 
     }

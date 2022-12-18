@@ -61,7 +61,6 @@ class EventAdminCrudController extends AbstractCrudController
         {
             return $actions
             ->add(Crud::PAGE_INDEX, Action::DETAIL);
-           
         }
 
 
@@ -92,7 +91,11 @@ class EventAdminCrudController extends AbstractCrudController
             ->setUploadDir('public/img/')
             ->setUploadedFileNamePattern('[randomhash].[extension]')
             ->setRequired(false),   
-            TextEditorField::new('descripcion'),
+            TextField::new('descripcion'),
+
+
+
+
             DateField::new('fechaInicio'),
             DateField::new('fechaFin'),
             TextField::new('tipo_publico'),

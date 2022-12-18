@@ -232,7 +232,20 @@ border: 1px solid rgba(228, 18, 31, 0.24);
             },
             events:
             {{data|raw}}
-            ,
+                        ,
+            customButtons: {
+            
+              myCustomButton: {
+              text: 'Back',  
+             
+              click : function () {
+              history.back();      
+             } 
+
+       
+                
+              }
+            },
             weekends: false,
             plugins: [ 'interaction', 'dayGrid', 'timeGrid'],
             timeZone: 'UTC',
