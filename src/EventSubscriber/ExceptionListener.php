@@ -34,7 +34,7 @@ class ExceptionListener
         $response = new Response();
         $response->setContent($message);
 
-        $response = new RedirectResponse('/');
+        $response = new RedirectResponse('/login');
         $event->setResponse($response);
     }
 }
