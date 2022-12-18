@@ -1,31 +1,30 @@
 :root {
     /* make the backend contents as wide as the browser window */
-    --body-max-width: 90%;
+    --body-max-width: 100%;
     /* change the background color of the  */
-    --body-bg: #acb7ae;
+    --body-bg: #B7C2B6;
 
-    --sidebar-max-width: 2.5 em;
+    --sidebar-max-width: 150px;
     /*--sidebar-max-width: 230px;*/
     --resize-handler-width: 9.375em;
 
-    --body-max-width: 64em;
-
     /* make the base font size smaller */
-    --sidebar-bg: #6B7A8F; 
+    --sidebar-bg: #9C949E; 
     
-    --sidebar-border-color: #161748;
+    --sidebar-border-color: red;
     --sidebar-logo-color: #d9d9d9;
     --sidebar-menu-color: #d9d9d9; 
-    --sidebar-menu-icon-color: #F7882F;
+    --sidebar-menu-icon-color: #EFE9E1;
+    --sidebar-menu-header-color: black;
 
-    --modal-header-bg: #6B7A8F;
+    --modal-header-bg: #8f6b74;
 
     --modal-bg: #acb7ae;
 
 
     --link-color: white;
     --link-hover-color: #F7882F;
-    --link-hover-decoration: none;
+    --link-hover-decoration: blue;
     --link-danger-color: var(--red-600);
     --link-danger-hover-color: var(--red-500);
 

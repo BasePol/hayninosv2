@@ -30,18 +30,33 @@ use App\Repository\JustifyRepository;
 use App\Entity\Notification;
 use Symfony\Component\Security\Core\User\UserInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Config\UserMenu;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
+
 class AdminDashboardController extends AbstractDashboardController
 {
     protected EntityManagerInterface $entityManager;
-    public function __construct(EntityManagerInterface $entityManager, UserRepository $user1, ProjectRepository $project) {
+    public function __construct(EntityManagerInterface $entityManager, UserRepository $user1, ProjectRepository $project ,AdminUrlGenerator $adminUrlGenerator) {
         $this->project = $project;
         $this->entityManager = $entityManager;
         $this->user1 = $user1;
+        $this->adminUrlGenerator = $adminUrlGenerator;
+
      
     } 
+    private $adminUrlGenerator;
+
     #[Route('/admin', name: 'admin')]
+    #[IsGranted('ROLE_ADMIN')]
     public function index(): Response
     {
+        $url = $this->adminUrlGenerator
+        ->setController(EventAdminCrudController::class)
+        ->setAction(Action::INDEX)
+        ->generateUrl();
+
+    return $this->redirect($url);
+
         $time = new \DateTime("now");
        
         $projects = $this->project->findAll();

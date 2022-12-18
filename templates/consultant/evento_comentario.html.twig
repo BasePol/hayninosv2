@@ -10,7 +10,7 @@
 </style>
 </head>
 
-{% if ea.crud.currentAction == 'detail' %}
+{% if ea.crud.currentAction == 'detail'  %}
     <table class="table table-striped">
         <tr><th>Fecha</th><th>Usuario</th><th>Comentario</th><th>Rating</th></tr>
         {% for value in field.value %}
@@ -21,7 +21,7 @@
             <td>
 
         {% for i in 0..4 %}
-        {% if i < value.rating %}
+        {% if i < value.ratings %}
             <span class="fa fa-star checked"></span>
         {% else %}
             <span class="fa fa-star"></span>

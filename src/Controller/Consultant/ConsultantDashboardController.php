@@ -50,24 +50,30 @@ class ConsultantDashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
+<<<<<<< HEAD
             ->setTitle('Ikids - Dashboard de Actividades')
             ->renderSidebarMinimized();
+=======
+            ->setTitle('Ikids - Dashboard de Actividades');
+            //->renderSidebarMinimized();
+>>>>>>> 60241913d47c4c763c419e440f4797a84c5358e3
     }
     public function configureMenuItems(): iterable
     {
         yield MenuItem::section('Main');
         //yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToRoute('Home', 'fa fa-home', 'app_start');
-        yield MenuItem::linkToRoute('Login', 'fa fa-id-card', 'app_login');
-        //->setPermission('IS_ANONYMOUS');
+
+        yield MenuItem::linkToRoute('Login', 'fa fa-id-card', 'app_start')
+        ->setPermission('PUBLIC_ACCESS');
 
         yield MenuItem::section('Services');
-        yield MenuItem::linkToCrud('Eventos', 'fa fa-child', Evento::class)
+        yield MenuItem::linkToCrud('Eventos', 'fa fa-binoculars', Evento::class)
         ->setController(EventoConsultantCrudController::class);
         yield MenuItem::linkToRoute('Calendario de Eventos', 'fa fa-calendar-check-o', 'app_calendar_events')
         ->setCssClass('text-white')
         ->setPermission('ROLE_CONSULTANT');
-        yield MenuItem::linkToCrud('Restaurantes and Bares', 'fa fa-spoon', RestaurantesBares::class)
+        yield MenuItem::linkToCrud('Lugares', 'fa fa-cutlery', RestaurantesBares::class)
         ->setController(RestaurantesBaresConsultantCrudController::class);
         yield MenuItem::linkToCrud('Favoritos', 'fa fa-heart', User::class)
         ->setController(UserCrudController::class)

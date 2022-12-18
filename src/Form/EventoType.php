@@ -4,22 +4,25 @@ namespace App\Form;
 
 use Vich\UploaderBundle\Entity\File;
 use App\Entity\Evento;
+use App\Entity\Comentario;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+
 
 class EventoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('fechaInicio')
-            ->add('fechaFin')
-            ->add('titulo')
-            ->add('descripcion')
-
+        /*
             ->add('brochure', FileType::class, [
                 'label' => 'Brochure (PDF file)',
 
@@ -32,6 +35,7 @@ class EventoType extends AbstractType
 
                 // unmapped fields can't define their validation using annotations
                 // in the associated entity, so you can use the PHP constraint classes
+               /*
                 'constraints' => [
                     new File([
                         'maxSize' => '1024k',
@@ -42,13 +46,15 @@ class EventoType extends AbstractType
                         'mimeTypesMessage' => 'Please upload a valid PDF document',
                     ])
                 ],
+                
             ])
+        */ 
+            ->add('ratings' , IntegerType::class)
 
-            ->add('tipoPublico')
-            ->add('localidad')
-            ->add('direccion')
-            ->add('precio')
-            ->add('rating')
+            ->add('mensaje' , TextareaType::class, [
+                'required' => true,
+                ] )
+
            // ->add('brochureFilename')
         ;
     }
@@ -56,7 +62,7 @@ class EventoType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => Evento::class,
+            'data_class' => Comentario::class,
         ]);
     }
 }

@@ -80,6 +80,7 @@ class EventoCrudController extends AbstractCrudController
             $evento->setTitulo($eventoJSON['title']);
             $evento->setDescripcion($eventoJSON['description']);
             $evento->setPrecio((float)$eventoJSON['price']);
+            $evento->setRating(0);
 //$fechaInicioJson = new \DateTime($eventoJSON['dtstart']);
             //var_dump((string)$eventoJSON['location']['latitude'] ."," . (string)$eventoJSON['location']['longitude']);exit;
             //var_dump(date('Y-m-d h:i:s', strtotime($eventoJSON['dtstart'])));

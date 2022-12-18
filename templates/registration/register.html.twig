@@ -2,6 +2,7 @@
     <html>
         <head>
             <style>
+
        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 *{
   margin: 0;
@@ -114,11 +115,11 @@ body{
 }
 .form-content .login-form,
 .form-content .signup-form{
-  width: calc(100% / 2 - 25px);
+  width: calc(100% / 2 - 1.5625em);
 }
 .forms .form-content .title{
   position: relative;
-  font-size: 24px;
+  font-size: 1.5em;
   font-weight: 500;
   color: #333;
 }
@@ -127,22 +128,22 @@ body{
   position: absolute;
   left: 0;
   bottom: 0;
-  height: 3px;
-  width: 25px;
+  height: 0.1875em;
+  width: 1.5625em;
   background: orange;
 }
 .forms .signup-form  .title:before{
-  width: 20px;
+  width: 1.25em;
 }
 .forms .form-content .input-boxes{
-  margin-top: 30px;
+  margin-top: 1.875em;
 }
 .forms .form-content .input-box{
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 3.125em;
   width: 100%;
-  margin: 10px 0;
+  margin: 0.625em 0;
   position: relative;
 }
 .form-content .input-box input{
@@ -283,8 +284,11 @@ body{
         <div class="form-content">
           <div class="login-form">
             <div class="title">Register</div>
-       
+
             <div class="input-boxes">
+                  {% if registrationForm is rootform %}
+                  {{ form_errors(registrationForm.email) }}
+                  {% endif %}
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
                 <input type="email" id="registration_form_email" placeholder="Email" name="registration_form[email]" required="required" class="input-lg" />
